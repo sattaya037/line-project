@@ -71,7 +71,8 @@ function image(event){
   client.getMessageContent(messageID).then((stream) => {
     var frameData  = [];
     stream.on('data', (chunk) => {
-        frameData.push(chunk)
+        console.log(chunk)
+        // frameData.push(chunk)
         // myWriteStream.write(chunk)
         // var img = jpeg.decode(chunk, true)
         
@@ -79,7 +80,7 @@ function image(event){
     })
     stream.on('end', () => {
         // var imageBuffer = fs.readFileSync(__dirname+"/img/"+messageID+".jpg");
-        console.log(frameData)
+        // console.log(frameData)
 
         // var pixels = jpeg.decode(imageBuffer, true)
         // console.log(imageBuffer)
