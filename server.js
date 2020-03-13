@@ -66,6 +66,7 @@ function handleEvent(event) {
 
 function image(event){
   var messageID=event.message.id;
+  console.log(messageID)
   client.getMessageContent(messageID).then((stream) => {
     stream.on('data', (chunk) => {
         // myWriteStream.write(chunk)
