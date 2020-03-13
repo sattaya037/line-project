@@ -71,7 +71,7 @@ function image(event){
     stream.on('data', (chunk) => {
         // myWriteStream.write(chunk)
         // var img = jpeg.decode(chunk, true)
-        console.log(chunk)
+        console.log(chunk.length)
 
     })
     stream.on('end', () => {
@@ -88,7 +88,6 @@ function Intent(event){
     console.log(imageBuffer)
     mobilenet.load().then(model=>{
         const img = pixels;
-        console.log(model)
         model.classify(img).then(predictions =>{
             console.log('Classification Results:', predictions);
         })
