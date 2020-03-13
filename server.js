@@ -79,7 +79,7 @@ function image(event){
 
     })
     stream.on('end', () => {
-        console.log(frameData)
+        console.log(frameData[0])
         // var imageBuffer = fs.readFileSync(__dirname+"/img/"+messageID+".jpg");
         // console.log(frameData)
 
