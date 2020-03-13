@@ -64,7 +64,9 @@ function image(event){
 
 function Intent(event){
     const imageBuffer = fs.readFileSync(__dirname+"/img/img01.jpg");
-    console.log(imageBuffer)
+    const tfimage = tfnode.node.decodeImage(imageBuffer);
+
+    console.log(tfimage)
 
 }
 
