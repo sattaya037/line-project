@@ -72,13 +72,14 @@ function image(event){
     var frameData  = [];
     stream.on('data', (chunk) => {
         console.log(chunk)
-        // frameData.push(chunk)
+        frameData.push(chunk)
         // myWriteStream.write(chunk)
         // var img = jpeg.decode(chunk, true)
         
 
     })
     stream.on('end', () => {
+        console.log(frameData)
         // var imageBuffer = fs.readFileSync(__dirname+"/img/"+messageID+".jpg");
         // console.log(frameData)
 
