@@ -66,7 +66,7 @@ function handleEvent(event) {
 
 function image(event){
   var messageID=event.message.id;
-
+    console.log(messageID)
   var myWriteStream = fs.createWriteStream(__dirname+'/img'+messageID+'.jpg','binary');
   client.getMessageContent(messageID).then((stream) => {
     stream.on('data', (chunk) => {
@@ -75,8 +75,10 @@ function image(event){
 
     })
     stream.on('end', () => {
-        var img = jpeg.decode(myWriteStream, true)
-            console.log(img)
+        // app.use('/'+messageID, express.static(messageID+'.jpg'))
+
+        // var img = jpeg.decode(myWriteStream, true)
+        //     console.log(img)
 
         })
 })
