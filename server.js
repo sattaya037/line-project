@@ -5,6 +5,7 @@ const line = require('@line/bot-sdk');
 const config = require('./config');
 const client = new line.Client(config);
 const port = process.env.PORT || 5000;
+const fs = require('fs');
 
 app.post('/webhook', line.middleware(config), (req, res) => {
   Promise
@@ -58,10 +59,13 @@ function handleEvent(event) {
 
 function image(event){
   var messageID=event.message.id;
+  
 }
 
 function Intent(event){
-    console.log(event)
+    const imageBuffer = fs.readFileSync(__dirname+"/img/img01.jpg");
+    console.log(imageBuffer)
+
 }
 
 
