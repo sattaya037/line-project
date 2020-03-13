@@ -67,9 +67,9 @@ function handleEvent(event) {
 function image(event){
   var messageID=event.message.id;
     console.log(messageID)
-    var frameData  = [];
 //   var myWriteStream = fs.createWriteStream(__dirname+'/img/'+messageID+'.jpg','binary');
   client.getMessageContent(messageID).then((stream) => {
+    var frameData  = [];
     stream.on('data', (chunk) => {
         frameData.push(chunk)
         // myWriteStream.write(chunk)
@@ -78,7 +78,8 @@ function image(event){
 
     })
     stream.on('end', () => {
-        var imageBuffer = fs.readFileSync(__dirname+"/img/"+messageID+".jpg");
+        // var imageBuffer = fs.readFileSync(__dirname+"/img/"+messageID+".jpg");
+        console.log(frameData)
 
         // var pixels = jpeg.decode(imageBuffer, true)
         // console.log(imageBuffer)
@@ -88,8 +89,9 @@ function image(event){
    
 
         })
-
         console.log(frameData)
+
+
 })
   
 }
