@@ -70,7 +70,9 @@ function image(event){
   client.getMessageContent(messageID).then((stream) => {
     stream.on('data', (chunk) => {
         // myWriteStream.write(chunk)
-        console.log(chunk)
+        var img = jpeg.decode(chunk, true)
+        console.log(img)
+
     })
     stream.on('end', () => {
  
