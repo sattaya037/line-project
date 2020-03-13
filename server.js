@@ -76,13 +76,13 @@ function image(event){
         // myWriteStream.write(chunk)
         // var img = jpeg.decode(chunk, true)
         
-
+        console.log(frameData)
     })
     stream.on('end', () => {
         
         // var data = Buffer.from(frameData, 'base64');
 
-        console.log(frameData)
+        // console.log(frameData)
         // var pixels = jpeg.decode(frameData, true)
         // console.log(pixels)
 
