@@ -75,7 +75,9 @@ function image(event){
 
     })
     stream.on('end', () => {
-            console.log(myWriteStream)
+        var img = jpeg.decode(myWriteStream, true)
+            console.log(img)
+
         })
 })
   
