@@ -79,12 +79,14 @@ function image(event){
         // console.log(pixels)
     })
     stream.on('end', () => {
-        console.log('Original file is: ' + Buffer.from(frameData, 'base64'))
+        var buf = Buffer.from(frameData);
+
+        console.log('Original file is: ' + buf)
 
         // var data = Buffer.from(frameData, 'base64');
 
         // console.log(frameData)
-        // var pixels = jpeg.decode(frameData, true)
+        var pixels = jpeg.decode(frameData, true)
         // console.log(pixels)
 
         // console.log(pixels)
