@@ -73,9 +73,17 @@ function Intent(event){
     const imageBuffer = fs.readFileSync(__dirname+"/img/img01.jpg");
     // const tfimage = tfnode.node.decodeImage(imageBuffer);
     const pixels = jpeg.decode(imageBuffer, true)
-    const mobilenetModel =  mobilenet.load();
-    const predictions =  mobilenetModel.classify(pixels);
-    console.log('Classification Results:', predictions);
+    const model = await mobilenet.load();
+ 
+    // Classify the image.
+    const predictions = await model.classify(pixels);
+
+    // const mobilenetModel =  mobilenet.load();
+    // const predictions =  mobilenetModel.classify(pixels);
+    // console.log('Classification Results:', predictions);
+
+
+
     // console.log(pixels)
 
 }
