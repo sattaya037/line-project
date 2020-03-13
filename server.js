@@ -74,7 +74,11 @@ function Intent(event){
     // const tfimage = tfnode.node.decodeImage(imageBuffer);
     const pixels = jpeg.decode(imageBuffer, true)
     mobilenet.load().then(model=>{
+        const img = pixels;
         console.log(model)
+        model.classify(img).then(predictions =>{
+            console.log('Classification Results:', predictions);
+        })
     })
     // const model = await mobilenet.load();
  
