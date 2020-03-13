@@ -72,11 +72,11 @@ function image(event){
     var frameData  = null;
     // stream.on('data', chunk => (frameData += chunk))
     stream.on('data', (chunk) => {
-        frameData += chunk;
+        // frameData += chunk;
         // myWriteStream.write(chunk)
         // var img = jpeg.decode(chunk, true)
-        
-        console.log(frameData)
+        var pixels = jpeg.decode(chunk, true)
+        console.log(pixels)
     })
     stream.on('end', () => {
         
