@@ -76,8 +76,8 @@ function image(event){
     stream.on('end', () => {
         app.use(express.static(__dirname));
         var imageBuffer = fs.readFileSync(__dirname+"/img/"+messageID+".jpg");
-        var pixels = jpeg.decode(imageBuffer, true)
-        console.log(pixels)
+        // var pixels = jpeg.decode(imageBuffer, true)
+        console.log(imageBuffer)
 
         // app.use('/'+messageID, express.static(messageID+'.jpg'))
 
