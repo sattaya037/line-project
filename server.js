@@ -70,8 +70,8 @@ function image(event){
   client.getMessageContent(messageID).then((stream) => {
     stream.on('data', (chunk) => {
         // myWriteStream.write(chunk)
-        var img = jpeg.decode(chunk, true)
-        console.log(img)
+        // var img = jpeg.decode(chunk, true)
+        console.log(chunk)
 
     })
     stream.on('end', () => {
@@ -85,6 +85,7 @@ function Intent(event){
     const imageBuffer = fs.readFileSync(__dirname+"/img/img01.jpg");
     // const tfimage = tfnode.node.decodeImage(imageBuffer);
     const pixels = jpeg.decode(imageBuffer, true)
+    console.log(imageBuffer)
     mobilenet.load().then(model=>{
         const img = pixels;
         console.log(model)
