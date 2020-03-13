@@ -72,14 +72,15 @@ function image(event){
     var frameData  = null;
     // stream.on('data', chunk => (frameData += chunk))
     stream.on('data', (chunk) => {
-        // frameData += chunk;
+        frameData += chunk;
         // myWriteStream.write(chunk)
         // var img = jpeg.decode(chunk, true)
-        var pixels = jpeg.decode(chunk, true)
-        console.log(pixels)
+        // var pixels = jpeg.decode(chunk, true)
+        // console.log(pixels)
     })
     stream.on('end', () => {
-        
+        console.log('Original file is: ' + Buffer.from(frameData, 'base64'))
+
         // var data = Buffer.from(frameData, 'base64');
 
         // console.log(frameData)
