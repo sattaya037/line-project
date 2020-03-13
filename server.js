@@ -13,6 +13,7 @@ const mobilenet = require('@tensorflow-models/mobilenet');
 // const mobilenet = require('@tensorflow-models/mobilenet');
 //     require('@tensorflow/tfjs-node')
 const jpeg = require('jpeg-js');
+app.use(express.static(__dirname));
 app.post('/webhook', line.middleware(config), (req, res) => {
   Promise
         .all(req.body.events.map(handleEvent))
@@ -74,15 +75,14 @@ function image(event){
 
     })
     stream.on('end', () => {
-        app.use(express.static(__dirname));
         var imageBuffer = fs.readFileSync(__dirname+"/img/"+messageID+".jpg");
+
         // var pixels = jpeg.decode(imageBuffer, true)
         console.log(imageBuffer)
+        const pixels = jpeg.decode(imageBuffer, true)
+        console.log(pixels)
 
-        // app.use('/'+messageID, express.static(messageID+'.jpg'))
-
-        // var img = jpeg.decode(myWriteStream, true)
-        //     console.log(img)
+   
 
         })
 })
