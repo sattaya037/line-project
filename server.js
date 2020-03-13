@@ -69,18 +69,17 @@ function image(event){
     console.log(messageID)
 //   var myWriteStream = fs.createWriteStream(__dirname+'/img/'+messageID+'.jpg','binary');
   client.getMessageContent(messageID).then((stream) => {
-    var frameData  = [];
-    stream.on('data', (chunk) => {
-        frameData.push(chunk)
-        // myWriteStream.write(chunk)
-        // var img = jpeg.decode(chunk, true)
+    var frameData  = '';
+    stream.on('data', chunk => (frameData += chunk))
+    // stream.on('data', (chunk) => {
+    //     frameData.push(chunk)
+    //     // myWriteStream.write(chunk)
+    //     // var img = jpeg.decode(chunk, true)
         
 
-    })
+    // })
     stream.on('end', () => {
-        console.log("1"+frameData)
-        console.log("L"+frameData.length)
-        console.log("0"+frameData[0])
+        console.log(frameData)
         // var pixels = jpeg.decode(frameData[0], true)
         // console.log(pixels)
 
