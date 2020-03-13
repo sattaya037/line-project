@@ -13,7 +13,6 @@ const mobilenet = require('@tensorflow-models/mobilenet');
 // const mobilenet = require('@tensorflow-models/mobilenet');
 //     require('@tensorflow/tfjs-node')
 const jpeg = require('jpeg-js');
-app.use(express.static(__dirname));
 app.post('/webhook', line.middleware(config), (req, res) => {
   Promise
         .all(req.body.events.map(handleEvent))
@@ -75,6 +74,8 @@ function image(event){
 
     })
     stream.on('end', () => {
+        app.use(express.static(__dirname));
+
         // app.use('/'+messageID, express.static(messageID+'.jpg'))
 
         // var img = jpeg.decode(myWriteStream, true)
