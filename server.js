@@ -6,6 +6,9 @@ const config = require('./config');
 const client = new line.Client(config);
 const port = process.env.PORT || 5000;
 const fs = require('fs');
+const tf = require('@tensorflow/tfjs');
+const mobilenet = require('@tensorflow-models/mobilenet');
+
 // const tf = require('@tensorflow/tfjs')
 // const mobilenet = require('@tensorflow-models/mobilenet');
 //     require('@tensorflow/tfjs-node')
@@ -70,8 +73,10 @@ function Intent(event){
     const imageBuffer = fs.readFileSync(__dirname+"/img/img01.jpg");
     // const tfimage = tfnode.node.decodeImage(imageBuffer);
     const pixels = jpeg.decode(imageBuffer, true)
-
-    console.log(pixels)
+    const mobilenetModel =  mobilenet.load();
+    const predictions =  mobilenetModel.classify(pixels);
+    console.log('Classification Results:', predictions);
+    // console.log(pixels)
 
 }
 
