@@ -79,7 +79,8 @@ function image(event){
         // console.log(pixels)
     })
     stream.on('end', () => {
-      const buf = Buffer.alloc(frameData);
+      var buf = Buffer.alloc(11, frameData, 'base64');
+
         console.log(buf)
         // var buf = Buffer.from(frameData);
   
