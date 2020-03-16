@@ -82,9 +82,11 @@ function image(event){
     stream.on('end', () => {
 
       var buf = Buffer.alloc(11, frameData, 'base64');
+      var buff = new Buffer(frameData, 'base64');
 
-        console.log(buframeData)
-        // var buf = Buffer.from(frameData);
+        console.log(buff)
+      var pixels = jpeg.decode(buff, true)
+      console.log(pixels)
   
 
 
@@ -117,6 +119,7 @@ function image(event){
 
 function Intent(event){
     const imageBuffer = fs.readFileSync(__dirname+"/img/img01.jpg");
+    
     // const tfimage = tfnode.node.decodeImage(imageBuffer);
     const pixels = jpeg.decode(imageBuffer, true)
     console.log(imageBuffer)
