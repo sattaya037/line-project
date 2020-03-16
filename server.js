@@ -69,9 +69,10 @@ function image(event){
     console.log(messageID)
 //   var myWriteStream = fs.createWriteStream(__dirname+'/img/'+messageID+'.jpg','binary');
   client.getMessageContent(messageID).then((stream) => {
-    var frameData  = [];
     // stream.on('data', chunk => (frameData += chunk))
     stream.setEncoding('binary')
+    var frameData  = [];
+
     stream.on('data', (chunk) => {
         frameData.push(chunk); 
         // myWriteStream.write(chunk)
@@ -80,7 +81,7 @@ function image(event){
         // console.log(pixels)
     })
     stream.on('end', () => {
-      var binary = Buffer.concat(data);
+      var binary = Buffer.concat(frameData);
 
       // var buf = Buffer.alloc(11, frameData, 'base64');
       // var buff = new Buffer(frameData, 'base64');
