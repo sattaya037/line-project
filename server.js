@@ -79,8 +79,10 @@ function image(event){
         // console.log(pixels)
     })
     stream.on('end', () => {
+      var utf8encoded = (new Buffer(frameData, 'base64')).toString('utf8');
+        console.log(utf8encoded)
         // var buf = Buffer.from(frameData);
-        var buf = new Buffer(frameData, 'binary');
+  
 
 
         console.log('Original file is: ' + buf)
