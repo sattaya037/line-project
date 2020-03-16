@@ -82,7 +82,7 @@ function image(event){
         // console.log(pixels)
     })
     stream.on('end', () => {
-      var result = Buffer.concat(chunks);
+      var result = Buffer.concat(frameData);
 
       console.log(result)
       // var binary = Buffer.concat(frameData);
