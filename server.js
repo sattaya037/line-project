@@ -86,39 +86,10 @@ function image(event){
       var pixels = jpeg.decode(result, true)
       mobilenet.load().then(model=>{
         model.classify(pixels).then(predictions =>{
-            console.log('Classification Results:', predictions);
+            console.log('Classification Results:', predictions[0]);
         })
     })
-      // var binary = Buffer.concat(frameData);
-
-      // var buf = Buffer.alloc(11, frameData, 'base64');
-      // var buff = new Buffer(frameData, 'base64');
-
-
-  
-
-
-        // console.log('Original file is: ' + buf)
-
-        // var data = Buffer.from(frameData, 'base64');
-
-        // console.log(frameData)
-        // var pixels = jpeg.decode(frameData, true)
-        // console.log(pixels)
-
-        // console.log(pixels)
-
-        // var imageBuffer = fs.readFileSync(__dirname+"/img/"+messageID+".jpg");
-        // console.log(frameData)
-
-        // var pixels = jpeg.decode(imageBuffer, true)
-        // console.log(imageBuffer)
-        // const pixels = jpeg.decode(imageBuffer, true)
-        // console.log(pixels)
-
-   
-
-        })
+  })
 
 
 })
@@ -126,29 +97,17 @@ function image(event){
 }
 
 function Intent(event){
-    const imageBuffer = fs.readFileSync(__dirname+"/img/img01.jpg");
+    // const imageBuffer = fs.readFileSync(__dirname+"/img/img01.jpg");
     
-    // const tfimage = tfnode.node.decodeImage(imageBuffer);
-    const pixels = jpeg.decode(imageBuffer, true)
-    mobilenet.load().then(model=>{
-        const img = pixels;
-        model.classify(img).then(predictions =>{
-            console.log('Classification Results:', predictions);
-        })
-    })
-    // const model = await mobilenet.load();
- 
-    // Classify the image.
-    // const predictions = await model.classify(pixels);
+    // const pixels = jpeg.decode(imageBuffer, true)
+    // mobilenet.load().then(model=>{
+    //     const img = pixels;
+    //     model.classify(img).then(predictions =>{
+    //         console.log('Classification Results:', predictions);
+    //     })
+    // })
 
-    // const mobilenetModel =  mobilenet.load();
-    // const predictions =  mobilenetModel.classify(pixels);
-    // console.log('Classification Results:', predictions);
-
-
-
-    // console.log(pixels)
-
+    
 }
 
 
