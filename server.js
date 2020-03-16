@@ -71,22 +71,21 @@ function image(event){
   client.getMessageContent(messageID).then((stream) => {
     var frameData  = null;
     // stream.on('data', chunk => (frameData += chunk))
+    stream.setEncoding('binary')
     stream.on('data', (chunk) => {
         frameData += chunk; 
-        console.log(chunk.length)
         // myWriteStream.write(chunk)
         // var img = jpeg.decode(chunk, true)
         // var pixels = jpeg.decode(chunk, true)
         // console.log(pixels)
     })
     stream.on('end', () => {
-
-      var buf = Buffer.alloc(11, frameData, 'base64');
+      // var buf = Buffer.alloc(11, frameData, 'base64');
       var buff = new Buffer(frameData, 'base64');
 
         console.log(buff)
-      var pixels = jpeg.decode(buff, true)
-      console.log(pixels)
+      // var pixels = jpeg.decode(buff, true)
+      // console.log(pixels)
   
 
 
