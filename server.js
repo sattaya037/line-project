@@ -81,12 +81,13 @@ function image(event){
         // console.log(pixels)
     })
     stream.on('end', () => {
-      var binary = Buffer.concat(frameData);
+
+      console.log(frameData)
+      // var binary = Buffer.concat(frameData);
 
       // var buf = Buffer.alloc(11, frameData, 'base64');
       // var buff = new Buffer(frameData, 'base64');
 
-        console.log(binary)
       // var pixels = jpeg.decode(buff, true)
       // console.log(pixels)
   
