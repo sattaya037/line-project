@@ -84,7 +84,11 @@ function image(event){
     stream.on('end', () => {
       var result = Buffer.concat(frameData);
       var pixels = jpeg.decode(result, true)
-      console.log(pixels)
+      mobilenet.load().then(model=>{
+        model.classify(pixels).then(predictions =>{
+            console.log('Classification Results:', predictions);
+        })
+    })
       // var binary = Buffer.concat(frameData);
 
       // var buf = Buffer.alloc(11, frameData, 'base64');
@@ -126,7 +130,6 @@ function Intent(event){
     
     // const tfimage = tfnode.node.decodeImage(imageBuffer);
     const pixels = jpeg.decode(imageBuffer, true)
-    console.log(imageBuffer)
     mobilenet.load().then(model=>{
         const img = pixels;
         model.classify(img).then(predictions =>{
