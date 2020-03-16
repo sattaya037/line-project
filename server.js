@@ -86,7 +86,11 @@ function image(event){
       var pixels = jpeg.decode(result, true)
       mobilenet.load().then(model=>{
         model.classify(pixels).then(predictions =>{
-            console.log('Classification Results:', predictions[0]);
+            var message={
+              type: 'text',
+              text: predictions[0].className
+            };
+            client.replyMessage(event.replyToken, message);
         })
     })
   })
