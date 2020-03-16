@@ -73,15 +73,17 @@ function image(event){
     // stream.on('data', chunk => (frameData += chunk))
     stream.on('data', (chunk) => {
         frameData += chunk; 
+        console.log(chunk.length)
         // myWriteStream.write(chunk)
         // var img = jpeg.decode(chunk, true)
         // var pixels = jpeg.decode(chunk, true)
         // console.log(pixels)
     })
     stream.on('end', () => {
+
       var buf = Buffer.alloc(11, frameData, 'base64');
 
-        console.log(buf)
+        console.log(buframeData)
         // var buf = Buffer.from(frameData);
   
 
