@@ -14,6 +14,19 @@ const mobilenet = require('@tensorflow-models/mobilenet');
 //     require('@tensorflow/tfjs-node')
 const jpeg = require('jpeg-js');
 app.use(express.static(__dirname));
+
+app.get('/name', callName); 
+  
+function callName(req, res) { 
+    var spawn = require("child_process").spawn; 
+    var process = spawn('python',["./hello.py", 
+                            req.query.firstname, 
+                            req.query.lastname] ); 
+    process.stdout.on('data', function(data) { 
+        res.send(data.toString()); 
+    } ) 
+} 
+
 app.post('/webhook', line.middleware(config), (req, res) => {
   Promise
         .all(req.body.events.map(handleEvent))
@@ -97,7 +110,7 @@ function image(event){
 
 
 })
-  
+
 }
 
 function Intent(event){
